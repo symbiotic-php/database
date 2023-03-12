@@ -1,10 +1,11 @@
 {
   "name": "symbiotic/database",
   "description": "Database connection configurator with the ability to define a connection by namespace.",
-  "version": "1.4.1",
+  "version": "1.4.1.1",
   "require": {
     "php": ">=8.0"
   },
+  "license": ["BSD-3-Clause"],
   "autoload": {
     "psr-4": {
       "Symbiotic\\Database\\": "src/Database/"

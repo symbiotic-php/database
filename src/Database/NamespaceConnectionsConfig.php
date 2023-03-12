@@ -22,7 +22,7 @@ class NamespaceConnectionsConfig implements NamespaceConnectionsConfigInterface
      *
      * @param array $namespacesConnections ['namespace' => 'connection_name'....]
      */
-    public function __construct(array $namespacesConnections = [],int $namespaceFinderDeepLevels = 7)
+    public function __construct(array $namespacesConnections = [], int $namespaceFinderDeepLevels = 7)
     {
         $this->namespaceFinderDeepLevels = $namespaceFinderDeepLevels;
         foreach ($namespacesConnections as $k => $v) {
@@ -80,8 +80,9 @@ class NamespaceConnectionsConfig implements NamespaceConnectionsConfigInterface
      */
     public function findNamespaceConnectionName(): ?string
     {
-        foreach (array_slice(debug_backtrace(1, $this->namespaceFinderDeepLevels), 2) as $v) {
-            if (isset($v['class']) && ($name = $this->getNamespaceConnection($v['class']))) {
+        foreach (array_slice(debug_backtrace(1, $this->namespaceFinderDeepLevels+2), 2) as $v) {
+            $class = isset($v['object']) ? get_class($v['object']) : ($v['class'] ?? null);
+            if ($class && ($name = $this->getNamespaceConnection($class))) {
                 return $name;
             }
         }

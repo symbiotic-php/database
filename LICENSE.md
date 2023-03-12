@@ -1,6 +1,6 @@
-# 3-Clause BSD License
-Copyright &copy; 2023 SymbioticPHP.
+3-Clause BSD License
 
+Copyright (c) 2023, SymbioticPHP.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
