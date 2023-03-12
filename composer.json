@@ -1,0 +1,21 @@
+{
+  "name": "symbiotic/database",
+  "description": "Database connection configurator with the ability to define a connection by namespace.",
+  "version": "1.4.1",
+  "require": {
+    "php": ">=8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Symbiotic\\Database\\": "src/Database/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Symbiotic\\Tests\\Database\\": "tests/"
+    }
+  },
+  "suggest": {
+    "symbiotic/eloquent": "Encapsulated version of Laravel ORM with namespace connection support"
+  }
+}
