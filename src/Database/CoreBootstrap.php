@@ -22,10 +22,10 @@ class CoreBootstrap extends AbstractBootstrap
             ConnectionsConfigInterface::class,
             static function (CoreInterface $container) {
                 // Ставим подключения из настроек
-                if (is_array($items = settings($container, 'databases')?->all())) {
+                if (\is_array($items = settings($container, 'databases')?->all())) {
                     $default = settings($container, 'core')->get('default_database_connection');
                 } // Ставим подключения из корневого конфига
-                elseif (is_array($dbConfig = $container->get('config')->get('database'))) {
+                elseif (\is_array($dbConfig = $container->get('config')->get('database'))) {
                     $default = $dbConfig['default'] ?? null;
                     $items = $dbConfig['connections'];
                 } else {

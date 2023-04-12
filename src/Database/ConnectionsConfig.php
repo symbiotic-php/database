@@ -95,4 +95,18 @@ class ConnectionsConfig implements ConnectionsConfigInterface
     {
         unset($this->connections[$name]);
     }
+
+    public function __serialize(): array
+    {
+        return [
+            'connections' => $this->connections,
+            'defaultConnectionName' => $this->defaultConnectionName
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->connections = $data['connections'];
+        $this->defaultConnectionName = $data['defaultConnectionName'];
+    }
 }

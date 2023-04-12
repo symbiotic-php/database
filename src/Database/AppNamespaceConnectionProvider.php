@@ -26,7 +26,7 @@ class AppNamespaceConnectionProvider extends ServiceProvider
         $manager = $core->get(DatabaseManager::class);
         $appConnectionName = $this->app->get(SettingsInterface::class)->get('database_connection_name');
 
-        if (is_string($appConnectionName)) {
+        if (\is_string($appConnectionName)) {
             if (!$manager->hasConnection($appConnectionName)) {
                 throw new DatabaseException(
                     'Connection with name [' . $appConnectionName . '] not found for Application '
@@ -39,7 +39,7 @@ class AppNamespaceConnectionProvider extends ServiceProvider
              * @var PackageConfig $packageConfig
              */
             $packageConfig = $core->get(PackagesRepositoryInterface::class)->getPackageConfig($this->app->getId());
-            foreach (array_keys($packageConfig->get('namespaces') ?? []) as $v) {
+            foreach (\array_keys($packageConfig->get('namespaces') ?? []) as $v) {
                 $namespaceResolver->addNamespaceConnection($v, $appConnectionName);
             }
         }

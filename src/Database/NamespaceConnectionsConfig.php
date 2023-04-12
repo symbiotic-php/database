@@ -41,15 +41,15 @@ class NamespaceConnectionsConfig implements NamespaceConnectionsConfigInterface
      */
     public function addNamespaceConnection(string $namespace, string $connectionName): void
     {
-        $this->namespacesConnections[trim($namespace, '\\')] = $connectionName;
+        $this->namespacesConnections[\trim($namespace, '\\')] = $connectionName;
         $this->sort();
     }
 
     protected function sort(): void
     {
-        uksort(
+        \uksort(
             $this->namespacesConnections,
-            fn($a, $b) => substr_count($b, '\\') <=> substr_count($a, '\\')
+            fn($a, $b) => \substr_count($b, '\\') <=> \substr_count($a, '\\')
         );
     }
 
@@ -62,9 +62,9 @@ class NamespaceConnectionsConfig implements NamespaceConnectionsConfigInterface
      */
     public function getNamespaceConnection(string $namespace): ?string
     {
-        $namespace = trim($namespace, '\\');
+        $namespace = \trim($namespace, '\\');
         foreach ($this->namespacesConnections as $k => $v) {
-            if (str_starts_with($namespace, $k)) {
+            if (\str_starts_with($namespace, $k)) {
                 return $v;
             }
         }
@@ -80,8 +80,8 @@ class NamespaceConnectionsConfig implements NamespaceConnectionsConfigInterface
      */
     public function findNamespaceConnectionName(): ?string
     {
-        foreach (array_slice(debug_backtrace(1, $this->namespaceFinderDeepLevels+2), 2) as $v) {
-            $class = isset($v['object']) ? get_class($v['object']) : ($v['class'] ?? null);
+        foreach (\array_slice(\debug_backtrace(1, $this->namespaceFinderDeepLevels + 2), 2) as $v) {
+            $class = isset($v['object']) ? \get_class($v['object']) : ($v['class'] ?? null);
             if ($class && ($name = $this->getNamespaceConnection($class))) {
                 return $name;
             }

@@ -258,7 +258,7 @@ class DatabaseManager implements ConnectionsConfigInterface,
         return $this->config->hasConnection($offset);
     }
 
-    public function offsetGet(mixed $offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->config->getConnection($offset);
     }
@@ -279,7 +279,7 @@ class DatabaseManager implements ConnectionsConfigInterface,
      *
      * @return void
      */
-    public function offsetUnset(mixed $offset)
+    public function offsetUnset(mixed $offset): void
     {
         $this->config->removeConnection($offset);
     }

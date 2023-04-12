@@ -1,7 +1,7 @@
 {
   "name": "symbiotic/database",
   "description": "Database connection configurator with the ability to define a connection by namespace.",
-  "version": "1.4.1.1",
+  "version": "1.4.2",
   "require": {
     "php": ">=8.0"
   },
